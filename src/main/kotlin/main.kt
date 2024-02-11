@@ -11,15 +11,18 @@ val dailyLimit = 150000
 val monthlyLimit = 600000
 val vkRauMaxTransfer = 15000
 val vkRauMaxTransferMonth = 40000
-val totalPreviousTransfer = 6000 // сумма переводов за месяц
-val transferAmount = 700 // сумма перевода
+val totalPreviousTransfer = 39000 // сумма переводов за месяц
+val transferAmount = 100 // сумма перевода
 var commission = 0
 
 fun main() {
     // Проверка функции calculateCommission
+
     result(cardType1)
     result(cardType2)
     result(cardType3)
+
+
 }
 
 // Функция вывода результата расчетов
@@ -29,7 +32,7 @@ fun result(cardType: String) {
     // Проверяем лимит по карте
     if ((transferAmount > dailyLimit || (transferAmount + totalPreviousTransfer) > monthlyLimit)
         || (cardType == "vkpay" && transferAmount > vkRauMaxTransfer)
-        || (cardType == "vkpay" && totalPreviousTransfer < vkRauMaxTransferMonth)
+        || (cardType == "vkpay" && (totalPreviousTransfer+transferAmount) > vkRauMaxTransferMonth)
     ) {
         println("Операция не выполнена, превышен лимит.")
         return
@@ -79,6 +82,7 @@ fun calculateCommission(cardType: String, totalPreviousTransfer: Int, transferAm
 
         else -> {
             return 0
+            //error("ERROR this CARD os not VALID")
         }
     }
 }

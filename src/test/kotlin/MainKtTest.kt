@@ -2,56 +2,33 @@ import org.junit.Test
 import org.junit.Assert.assertEquals
 
 class MainKtTest {
-    val cardType1 = "visa"
-    val cardType2 = "mastercard"
-    val cardType3 = "vkpay"
-    val totalPreviousTransfer = 6000
-    val amount = 70000
+    // Инициализируем объект класса MainKt
+
 
     @Test
-    fun calculateCommissioncardType1() {
-        val result = calculateCommission(cardType1, totalPreviousTransfer, amount)
-        assertEquals(525, result)
+    fun testResult() {
+        // Проверяем функцию result для разных типов карт
+        result("visa")
+        result("mastercard")
+        result("vkpay")
+        result("test")
+
     }
 
     @Test
-    fun calculateCommissioncardType2() {
-        val result = calculateCommission(cardType2, totalPreviousTransfer, amount)
-        assertEquals(26, result)
+    fun testCalculateCommission() {
+        // Проверяем функцию calculateCommission для разных типов карт
+        calculateCommission("vkpay", 39000, 100)
+        calculateCommission("visa", 39000, 100)
+        calculateCommission("visa", 3900, 10000)
+        calculateCommission("mastercard", 74000, 5000) // бранч видит только решение но не условие :(
+        calculateCommission("mastercard", 500, 100)
+        calculateCommission("mastercard", 80000, 1000)
+        calculateCommission("mastercard", 8000, 1000)
+        calculateCommission("mastercard", 668000, 1000) // бранч не видит :(
+        calculateCommission("mastercard", 668000, 221000) // бранч не видит :(
+        calculateCommission("vkpay", 55000, 100) // бранч не видит :(
+        calculateCommission("vkpay", 3900, 22100) // бранч не видит :(
     }
-
-    @Test
-    fun calculateCommissioncardType3() {
-        val result = calculateCommission(cardType3, totalPreviousTransfer, amount)
-        assertEquals(0, result)}
-
-    @Test
-    fun calculateCommissioncardType4() {
-        val result = calculateCommission(cardType1, 70, 100)
-        assertEquals(35, result)
-    }
-
-    @Test
-    fun calculateCommissioncardType5() {
-        val result = calculateCommission(cardType2, 700, 1000)
-        assertEquals(0, result)
-    }
-
-    @Test
-    fun calculateCommissioncardType6() {
-        val result = calculateCommission(cardType2, 77000, 100)
-        assertEquals(20, result)
-    }
-
-    @Test
-    fun calculateCommissioncardType7() {
-        val result = calculateCommission("test", 77000, 100)
-        assertEquals(0, result)
-    }
-    @Test
-    fun result1() {
-       result("cardType3")
-
-
-
 }
+

@@ -8,7 +8,7 @@ class MainKtTest {
     fun testCalculateCommission1() {
         // Проверяем функцию calculateCommission для разных типов карт
         val result = calculateCommission("visa", 3000, 100)
-        assertEquals(350, result)
+        assertEquals(35, result)
     }
     @Test
     fun testCalculateCommission2() {

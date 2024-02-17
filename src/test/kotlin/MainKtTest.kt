@@ -12,23 +12,25 @@ class MainKtTest {
         result("mastercard")
         result("vkpay")
         result("test")
-
     }
 
     @Test
     fun testCalculateCommission() {
         // Проверяем функцию calculateCommission для разных типов карт
-        calculateCommission("vkpay", 39000, 100)
-        calculateCommission("visa", 39000, 100)
-        calculateCommission("visa", 3900, 10000)
-        calculateCommission("mastercard", 74000, 5000) // бранч видит только решение но не условие :(
-        calculateCommission("mastercard", 500, 100)
+        calculateCommission("visa", 3000, 100)
+        calculateCommission("visa", 550000, 160000)
+        calculateCommission("visa", 3000, 180000)
+        calculateCommission("mastercard", 74000, 5000)
+        calculateCommission("mastercard", 500, 1000)
         calculateCommission("mastercard", 80000, 1000)
-        calculateCommission("mastercard", 8000, 1000)
-        calculateCommission("mastercard", 668000, 1000) // бранч не видит :(
-        calculateCommission("mastercard", 668000, 221000) // бранч не видит :(
-        calculateCommission("vkpay", 55000, 100) // бранч не видит :(
-        calculateCommission("vkpay", 3900, 22100) // бранч не видит :(
+        calculateCommission("mastercard", 8000, 100)
+        calculateCommission("mastercard", 550000, 150000)
+        calculateCommission("mastercard", 66800, 221000)
+        calculateCommission("vkpay", 3000, 100)
+        calculateCommission("vkpay", 50000, 1000)
+        calculateCommission("vkpay", 30000, 18000)
+        calculateCommission("wrong", 30000, 18000)
+
     }
 }
 
